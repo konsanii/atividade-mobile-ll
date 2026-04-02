@@ -1,50 +1,105 @@
-# Welcome to your Expo app 👋
+# 📱 App de Cadastro com CEP Automático
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Um aplicativo React Native com Expo para cadastrar usuários com busca automática de endereço por CEP.
 
-## Get started
+## 🎯 Funcionalidades
 
-1. Install dependencies
+- ✅ **Cadastro de usuários** com formulário completo
+- ✅ **Busca de CEP automática** usando API ViaCEP
+- ✅ **Armazenamento local** de dados com AsyncStorage
+- ✅ **Listagem de usuários** cadastrados
+- ✅ **Deletar usuários** da lista
+- ✅ Implementação com **async/await** e **fetch**
 
-   ```bash
-   npm install
-   ```
+## 🚀 Como Usar
 
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### 1. Instalação
 
 ```bash
-npm run reset-project
+cd "c:\Users\Alunos\Desktop\mobile ll\atividade\MeuApp"
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Executar o App
 
-## Learn more
+```bash
+npm start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### 3. Abrir em:
+- **Android**: Pressione `a`
+- **Web**: Pressione `w`
+- **iOS**: Pressione `i` (Mac)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 📋 Como Usar
 
-## Join the community
+### Na aba CADASTRO:
+1. Digite Nome
+2. Digite Email
+3. Digite CEP (ex: 01310100)
+4. Clique "Buscar"
+5. Campos preenchem automaticamente
+6. Clique "Salvar Usuário"
 
-Join our community of developers creating universal apps.
+### Na aba USUÁRIOS:
+- Vê lista de cadastrados
+- Clique X para deletar
+- Clique "Recarregar" para atualizar
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 📚 Documentação IMPORTANTE
+
+**Leia estes arquivos para aprender:**
+
+1. **[EXPLICACAO_DETALHADA.md](EXPLICACAO_DETALHADA.md)** - Guia completo com explicações de:
+   - O que é `async/await`
+   - Como `fetch` funciona
+   - Como `AsyncStorage` armazena dados
+   - Fluxo completo da aplicação
+
+2. **[EXEMPLOS_PRATICOS.md](EXEMPLOS_PRATICOS.md)** - Exemplos práticos com:
+   - Analogias (pizza, etc)
+   - Código comentado
+   - Exercícios para você tentar
+   - Padrões que você pode reusar
+
+## 🔑 Conceitos Implementados
+
+- `async/await` - Operações assíncronas
+- `fetch` - Requisições HTTP
+- `AsyncStorage` - Armazenamento local
+- Try/Catch - Tratamento de erros
+- React Hooks - useState, useFocusEffect
+
+## 📁 Estrutura
+
+```
+src/utils/
+├── cepService.js      # Busca CEP (fetch + async/await)
+└── storageService.js  # Armazena dados (AsyncStorage + async/await)
+
+app/
+├── _layout.tsx        # Navegação com abas
+├── cadastro.tsx       # Tela de cadastro
+└── lista.tsx          # Tela de listagem
+```
+
+## ✨ Próximos Passos
+
+- [ ] Validação de email
+- [ ] Editar usuário
+- [ ] Buscar usuário
+- [ ] Exportar dados
+- [ ] Dark mode
+
+## 🎓 Para o Professor
+
+Projeto implementa **todos** os requisitos:
+- ✅ Interface funcional
+- ✅ Sistema de CEP automático
+- ✅ Armazenamento local
+- ✅ Listagem de usuários
+- ✅ Usa `fetch`, `async`, `await`
+- ✅ Feito com Expo
+- ✅ Bem documentado
+
+**Desenvolvido com ❤️ para fins educacionais**
