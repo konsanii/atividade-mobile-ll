@@ -7,13 +7,14 @@ export const salvarUsuario = async (usuario) => {
 
   await db.runAsync(
     `INSERT INTO usuarios
-       (id, nome, sexo, email, cep, rua, numero, complemento, bairro, cidade, estado, dataCadastro)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+       (id, nome, sexo, email, telefone, cep, rua, numero, complemento, bairro, cidade, estado, dataCadastro)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
       id,
       usuario.nome ?? '',
       usuario.sexo ?? '',
       usuario.email ?? '',
+      usuario.telefone ?? '',
       usuario.cep ?? '',
       usuario.rua ?? '',
       usuario.numero ?? '',

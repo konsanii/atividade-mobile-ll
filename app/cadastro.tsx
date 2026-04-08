@@ -16,6 +16,7 @@ export default function CadastroScreen() {
   const [nome, setNome] = useState('');
   const [sexo, setSexo] = useState('');
   const [email, setEmail] = useState('');
+  const [telefone, setTelefone] = useState('');
   const [cep, setCep] = useState('');
   const [rua, setRua] = useState('');
   const [numero, setNumero] = useState('');
@@ -52,8 +53,8 @@ export default function CadastroScreen() {
   };
 
   const handleSalvarUsuario = async () => {
-    if (!nome.trim() || !sexo || !email.trim() || !cep.trim() || !cepBuscado || !numero.trim()) {
-      Alert.alert('Erro', 'Preencha todos os campos obrigatórios e busque o CEP');
+    if (!nome.trim() || !sexo || !telefone.trim() || !cep.trim() || !cepBuscado) {
+      Alert.alert('Erro', 'Preencha os campos obrigatórios (Nome, Sexo, Telefone, CEP) e busque o CEP');
       return;
     }
 
@@ -63,6 +64,7 @@ export default function CadastroScreen() {
         nome,
         sexo,
         email,
+        telefone,
         cep,
         rua,
         numero,
@@ -77,6 +79,7 @@ export default function CadastroScreen() {
       setNome('');
       setSexo('');
       setEmail('');
+      setTelefone('');
       setCep('');
       setRua('');
       setNumero('');
@@ -98,7 +101,7 @@ export default function CadastroScreen() {
         <Text style={styles.titulo}>Cadastro de Usuário</Text>
 
         <View style={styles.formularioGroup}>
-          <Text style={styles.label}>Nome</Text>
+          <Text style={styles.label}>Nome <Text style={styles.obrigatorio}>*</Text></Text>
           <TextInput
             style={styles.input}
             placeholder="Digite seu nome"
@@ -106,6 +109,7 @@ export default function CadastroScreen() {
             onChangeText={setNome}
             editable={!carregando}
             placeholderTextColor="#999"
+            autoCorrect={false}
           />
         </View>
 
@@ -128,7 +132,7 @@ export default function CadastroScreen() {
         </View>
 
         <View style={styles.formularioGroup}>
-          <Text style={styles.label}>Email</Text>
+          <Text style={styles.label}>Email <Text style={styles.opcional}>(opcional)</Text></Text>
           <TextInput
             style={styles.input}
             placeholder="Digite seu email"
@@ -137,11 +141,27 @@ export default function CadastroScreen() {
             keyboardType="email-address"
             editable={!carregando}
             placeholderTextColor="#999"
+            autoCorrect={false}
+            autoCapitalize="none"
           />
         </View>
 
         <View style={styles.formularioGroup}>
-          <Text style={styles.label}>CEP</Text>
+          <Text style={styles.label}>Telefone <Text style={styles.obrigatorio}>*</Text></Text>
+          <TextInput
+            style={styles.input}
+            placeholder="(00) 00000-0000"
+            value={telefone}
+            onChangeText={setTelefone}
+            keyboardType="phone-pad"
+            maxLength={15}
+            editable={!carregando}
+            placeholderTextColor="#999"
+          />
+        </View>
+
+        <View style={styles.formularioGroup}>
+          <Text style={styles.label}>CEP <Text style={styles.obrigatorio}>*</Text></Text>
           <View style={styles.cepContainer}>
             <TextInput
               style={[styles.input, styles.cepInput]}
@@ -300,6 +320,11 @@ const styles = StyleSheet.create({
   obrigatorio: {
     color: '#e53e3e',
     fontSize: 14,
+  },
+  opcional: {
+    color: '#999',
+    fontSize: 12,
+    fontWeight: '400',
   },
   sexoContainer: {
     flexDirection: 'row',

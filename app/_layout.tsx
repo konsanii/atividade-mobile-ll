@@ -1,3 +1,4 @@
+import 'react-native-reanimated';
 import { Text } from 'react-native';
 import { Tabs } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -63,8 +64,6 @@ export default function RootLayout() {
             headerTitle: 'Avaliações',
           }}
         />
-        <Tabs.Screen name="+not-found" options={{ href: null }} />
-        <Tabs.Screen name="index" options={{ href: null }} />
       </Tabs>
       <StatusBar style="auto" />
     </>

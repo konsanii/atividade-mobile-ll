@@ -15,6 +15,7 @@ export const getDatabase = async () => {
       nome TEXT NOT NULL,
       sexo TEXT DEFAULT '',
       email TEXT DEFAULT '',
+      telefone TEXT DEFAULT '',
       cep TEXT DEFAULT '',
       rua TEXT DEFAULT '',
       numero TEXT DEFAULT '',
@@ -44,6 +45,8 @@ export const getDatabase = async () => {
       data TEXT DEFAULT ''
     );
   `);
+
+  await db.execAsync(`ALTER TABLE usuarios ADD COLUMN telefone TEXT DEFAULT '';`).catch(() => {});
 
   dbInstance = db;
   return db;

@@ -19,6 +19,7 @@ interface Usuario {
   nome: string;
   sexo: string;
   email: string;
+  telefone: string;
   cep: string;
   rua: string;
   numero: string;
@@ -118,7 +119,8 @@ export default function ListaScreen() {
         <View>
           <Text style={styles.nomeUsuario}>{item.nome}</Text>
           <Text style={styles.sexoBadge}>{item.sexo}</Text>
-          <Text style={styles.emailUsuario}>{item.email}</Text>
+          {item.telefone ? <Text style={styles.emailUsuario}>📱 {item.telefone}</Text> : null}
+          {item.email ? <Text style={styles.emailUsuario}>{item.email}</Text> : null}
         </View>
         <View style={styles.botoesCartao}>
           <TouchableOpacity
