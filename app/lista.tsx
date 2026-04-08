@@ -40,18 +40,15 @@ export default function ListaScreen() {
   const [complementoEdit, setComplementoEdit] = useState('');
   const [salvandoEdit, setSalvandoEdit] = useState(false);
 
-  // Carregar usuários quando a tela ganhar foco
   useFocusEffect(
     React.useCallback(() => {
       carregarUsuarios();
     }, [])
   );
 
-  // Função async/await para carregar usuários
   const carregarUsuarios = async () => {
     setCarregando(true);
     try {
-      // Usando async/await para obter dados do AsyncStorage
       const usuariosCarregados = await obterTodosUsuarios();
       setUsuarios(usuariosCarregados as Usuario[]);
     } catch (erro) {
@@ -94,7 +91,6 @@ export default function ListaScreen() {
     }
   };
 
-  // Função async/await para deletar usuário
   const handleDeletarUsuario = async (id: string, nome: string) => {
     Alert.alert('Confirmar', `Deseja deletar o usuário ${nome}?`, [
       { text: 'Cancelar', onPress: () => {} },
@@ -102,12 +98,10 @@ export default function ListaScreen() {
         text: 'Deletar',
         onPress: async () => {
           try {
-            // Usando async/await para deletar
             await deletarUsuario(id);
 
             Alert.alert('Sucesso', 'Usuário deletado com sucesso!');
 
-            // Recarregar lista
             await carregarUsuarios();
           } catch (erro) {
             Alert.alert('Erro', 'Erro ao deletar usuário: ' + (erro as Error).message);
@@ -118,7 +112,6 @@ export default function ListaScreen() {
     ]);
   };
 
-  // Componente para renderizar cada usuário
   const renderUsuario = ({ item }: { item: Usuario }) => (
     <View style={styles.cartao}>
       <View style={styles.cabecalhoCartao}>
@@ -229,7 +222,6 @@ export default function ListaScreen() {
     </Modal>
   );
 
-  // Tela vazia
   const telaVazia = () => (
     <View style={styles.containerVazio}>
       <Text style={styles.textoVazio}>📋</Text>

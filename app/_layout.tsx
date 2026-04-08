@@ -1,20 +1,10 @@
 import { Text } from 'react-native';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { Tabs } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <>
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: '#0066cc',
@@ -73,12 +63,10 @@ export default function RootLayout() {
             headerTitle: 'Avaliações',
           }}
         />
-        <Tabs.Screen name="(tabs)" options={{ href: null }} />
-        <Tabs.Screen name="modal" options={{ href: null }} />
         <Tabs.Screen name="+not-found" options={{ href: null }} />
         <Tabs.Screen name="index" options={{ href: null }} />
       </Tabs>
       <StatusBar style="auto" />
-    </ThemeProvider>
+    </>
   );
 }

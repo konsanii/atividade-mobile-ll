@@ -26,7 +26,6 @@ export default function CadastroScreen() {
   const [carregando, setCarregando] = useState(false);
   const [cepBuscado, setCepBuscado] = useState(false);
 
-  // Buscar endereço pelo CEP - função async/await
   const handleBuscarCep = async () => {
     if (!cep.trim()) {
       Alert.alert('Erro', 'Digite um CEP válido');
@@ -35,7 +34,6 @@ export default function CadastroScreen() {
 
     setCarregando(true);
     try {
-      // Usando async/await com fetch
       const endereco = await buscarEnderecoPorCep(cep);
 
       setRua(endereco.rua);
@@ -53,7 +51,6 @@ export default function CadastroScreen() {
     }
   };
 
-  // Salvar usuário - função async/await
   const handleSalvarUsuario = async () => {
     if (!nome.trim() || !sexo || !email.trim() || !cep.trim() || !cepBuscado || !numero.trim()) {
       Alert.alert('Erro', 'Preencha todos os campos obrigatórios e busque o CEP');
@@ -62,7 +59,6 @@ export default function CadastroScreen() {
 
     setCarregando(true);
     try {
-      // Usando async/await para salvar
       await salvarUsuario({
         nome,
         sexo,
@@ -78,7 +74,6 @@ export default function CadastroScreen() {
 
       Alert.alert('Sucesso', 'Usuário cadastrado com sucesso!');
 
-      // Limpar formulário
       setNome('');
       setSexo('');
       setEmail('');
@@ -102,7 +97,6 @@ export default function CadastroScreen() {
       <View style={styles.content}>
         <Text style={styles.titulo}>Cadastro de Usuário</Text>
 
-        {/* Campo Nome */}
         <View style={styles.formularioGroup}>
           <Text style={styles.label}>Nome</Text>
           <TextInput
@@ -115,7 +109,6 @@ export default function CadastroScreen() {
           />
         </View>
 
-        {/* Campo Sexo */}
         <View style={styles.formularioGroup}>
           <Text style={styles.label}>Sexo <Text style={styles.obrigatorio}>*</Text></Text>
           <View style={styles.sexoContainer}>
@@ -134,7 +127,6 @@ export default function CadastroScreen() {
           </View>
         </View>
 
-        {/* Campo Email */}
         <View style={styles.formularioGroup}>
           <Text style={styles.label}>Email</Text>
           <TextInput
@@ -148,7 +140,6 @@ export default function CadastroScreen() {
           />
         </View>
 
-        {/* Campo CEP */}
         <View style={styles.formularioGroup}>
           <Text style={styles.label}>CEP</Text>
           <View style={styles.cepContainer}>
@@ -176,7 +167,6 @@ export default function CadastroScreen() {
           </View>
         </View>
 
-        {/* Campos de Endereço */}
         {cepBuscado && (
           <>
             <View style={styles.formularioGroup}>
@@ -255,7 +245,6 @@ export default function CadastroScreen() {
               />
             </View>
 
-            {/* Botão Salvar */}
             <TouchableOpacity
               style={[styles.botao, styles.botaoSalvar, carregando && styles.botaoDesabilitado]}
               onPress={handleSalvarUsuario}

@@ -1,6 +1,3 @@
-// Inicialização do banco de dados SQLite
-// Cria as tabelas na primeira execução do app
-
 import * as SQLite from 'expo-sqlite';
 
 let dbInstance = null;
@@ -10,10 +7,8 @@ export const getDatabase = async () => {
 
   const db = await SQLite.openDatabaseAsync('meuapp.db');
 
-  // WAL mode melhora performance de escrita
   await db.execAsync('PRAGMA journal_mode = WAL;');
 
-  // Criação das tabelas
   await db.execAsync(`
     CREATE TABLE IF NOT EXISTS usuarios (
       id TEXT PRIMARY KEY,

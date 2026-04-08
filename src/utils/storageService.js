@@ -1,9 +1,4 @@
-// Serviço de acesso ao banco de dados SQLite
-// Usa async/await para todas as operações
-
 import { getDatabase } from './database';
-
-// ─── Usuários ─────────────────────────────────────────────────
 
 export const salvarUsuario = async (usuario) => {
   const db = await getDatabase();
@@ -58,8 +53,6 @@ export const limparTodos = async () => {
   await db.execAsync('DELETE FROM usuarios');
 };
 
-// ─── Compras ──────────────────────────────────────────────────
-
 export const salvarCompra = async (compra) => {
   const db = await getDatabase();
   const id = Date.now().toString();
@@ -86,8 +79,6 @@ export const obterCompras = async () => {
   const db = await getDatabase();
   return await db.getAllAsync('SELECT * FROM compras ORDER BY rowid DESC');
 };
-
-// ─── Avaliações ───────────────────────────────────────────────
 
 export const salvarAvaliacao = async (avaliacao) => {
   const db = await getDatabase();
