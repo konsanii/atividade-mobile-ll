@@ -1,9 +1,14 @@
-import 'react-native-reanimated';
+import { useEffect } from 'react';
 import { Text } from 'react-native';
 import { Tabs } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import * as SplashScreen from 'expo-splash-screen';
 
 export default function RootLayout() {
+  useEffect(() => {
+    SplashScreen.hideAsync().catch(() => {});
+  }, []);
+
   return (
     <>
       <Tabs
@@ -28,6 +33,10 @@ export default function RootLayout() {
           },
         }}
       >
+        <Tabs.Screen
+          name="index"
+          options={{ href: null }}
+        />
         <Tabs.Screen
           name="cadastro"
           options={{
